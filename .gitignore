@@ -1,0 +1,4 @@
+/jsLinters
+/node_modules
+/.vscode
+*.jshintrc
