@@ -24,6 +24,17 @@ const {name: {first, second}, pass, rights} = user;
 
 console.log(first, second, rights); //Sam Smith user
 
+/* Переименование переменных */
+
+let person = {
+	name: 'Jack',
+	age: 20
+};
+
+let {name: personeName, age: personAge} = person;
+
+console.log(personeName, personAge); //Jack 20
+
 
 /* Деструктуризация массива */
 
