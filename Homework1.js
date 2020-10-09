@@ -15,23 +15,14 @@ const sponsors = {
 const {cash, eu, rus} = sponsors;
 const {eu: [firstEuSp, secondEuSp, thirdEuSp]} = sponsors;
 
-function calcCash(own = 0) {
-    let everyCash = Array.prototype.slice.call(arguments);
-    let total = own;
-    for (let i = 0; i < everyCash[1].length; i++) {
-        total += +everyCash[1][i];
-    }
-    return total;
+function calcCash(own) {
+    return own.reduce((sum, current) => sum + current);
 }
-
-const money = calcCash(null, cash);
 
 function makeBusiness(owner, cash, emp, director = 'Victor' ) {
-    const sumSponsors = eu.concat(rus, 'unexpected sponsor');
-
-    console.log(`We have a business. Owner: ${owner}, director: ${director}. Our budget: ${cash}. And our employers: ${emp}`);
-    console.log('And we have a sponsors: ');
-    console.log.apply(null, sumSponsors);
-    console.log(`Note. Be careful with ${firstEuSp}. It's a huge risk.`);
+    console.log(`We have a business. Owner: ${owner}, director: ${director}. Our budget: ${cash}.
+And our employers: ${emp}.
+And we have a sponsors: ${eu}${rus},unexpected sponsor.
+Note. Be careful with ${firstEuSp}. It's a huge risk.`);
 }
-makeBusiness.apply(null, ['Sam', money, employersNames]);
+makeBusiness.apply(null, ['Sam', calcCash(cash), employersNames]);
